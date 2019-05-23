@@ -1,0 +1,31 @@
+export interface DataGminy {
+    'wojewodztwa.id': string;
+    'wojewodztwa.nazwa': string;
+    'gminy.typ_id': string;
+    'gminy.powierzchnia': string;
+    'gminy.wydatki_roczne': string;
+    'gminy.powiat_id': string;
+    'gminy.dochody_roczne': string;
+    'gminy.bip_www': string;
+    'gminy.powiatowa': string;
+    'gminy.liczba_ludnosci': number;
+    'gminy.wojewodzka': string;
+    'gminy.nts': string;
+    'gminy.wojewodztwo_id': string;
+    'gminy.nazwa': string;
+    'gminy.teryt': string;
+    'gminy.zadluzenie_roczne': string;
+    'gminy.szef_stanowisko_id': string;
+    'gminy.rada_nazwa': string;
+    'gminy.nazwa_urzedu': string;
+    'gminy.telefon': string;
+    'gminy.adres': string;
+    'gminy.id': string;
+    'gminy.fax': string;
+    'gminy.email': string;
+    'gminy.typ_nazwa': string;
+    'powiaty.typ_id': string;
+    'powiaty.id': string;
+    'powiaty.nazwa': string;
+    'powiaty.sejm_okreg_id': string;
+}
