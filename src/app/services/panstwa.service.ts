@@ -1,23 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DataPanstwa } from '../interfaces/data-panstwa.interface';
-import { Observable } from 'rxjs';
-import { Dataset } from '../interfaces/data-set.interface';
+import { AbstractService } from './base/abstract.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PanstwaService {
+export class PanstwaService  extends AbstractService<DataPanstwa>  {
 
   url: string = "https://api-v3.mojepanstwo.pl/dane/panstwa";
+  order: string = "panstwa.nazwa[asc]"
 
-  constructor(private http: HttpClient) { }
-
-  get(query?: string): Observable<Dataset<DataPanstwa>> {
-    let url:string = this.url
-    if(query){
-      url += '?conditions[q]=' + query
-    }
-    return this.http.get<Dataset<DataPanstwa>>(url);
+  constructor(public http: HttpClient) { 
+    super(http)
   }
 }
