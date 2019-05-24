@@ -1,0 +1,5 @@
+<div *ngIf="country">
+    {{country['panstwa.id']}}
+    {{country['panstwa.symbol']}}   
+    <a [routerLink]="'/country/' + country['panstwa.nazwa']">{{country['panstwa.nazwa']}}</a>
+</div>
