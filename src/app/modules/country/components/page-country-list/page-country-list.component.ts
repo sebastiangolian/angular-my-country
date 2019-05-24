@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DataPanstwa } from 'src/app/interfaces/data-panstwa.interface';
 import { PanstwaService } from 'src/app/services/panstwa.service';
 import { DataObject } from 'src/app/interfaces/base/data-object.interface';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-page-country-list',
@@ -10,11 +12,16 @@ import { DataObject } from 'src/app/interfaces/base/data-object.interface';
 })
 export class PageCountryListComponent implements OnInit {
   
-  public countries: DataObject<DataPanstwa>[] = null;
+  public countries: Observable<DataPanstwa[]> = 
+  this.panstwaService.get()
+    .pipe(
+      map(({Dataobject}) => Dataobject),
+      map(data => {return data.map(element => element.data)})
+    );
   
   constructor(private panstwaService: PanstwaService) {}
 
-  async ngOnInit() {
-    await this.panstwaService.get().subscribe(response => this.countries = response.Dataobject)
+  ngOnInit() {
+    
   }
 }

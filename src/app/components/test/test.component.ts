@@ -6,6 +6,7 @@ import { DataPanstwa } from 'src/app/interfaces/data-panstwa.interface';
 import { PanstwaService } from 'src/app/services/panstwa.service';
 import { GminyService } from 'src/app/services/gminy.service';
 import { DataGminy } from 'src/app/interfaces/data-gminy.interface';
+import { map, mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-test',
@@ -19,9 +20,20 @@ export class TestComponent implements OnInit {
 
   ngOnInit() {
 
-    this.kodyPocztoweService.get('21-412').subscribe((data:Dataset<DataKodyPocztowe>)=>console.log(data.Dataobject[0].data["kody_pocztowe.gminy_str"])); 
-    this.panstwaService.get('Honduras').subscribe((data:Dataset<DataPanstwa>)=>console.log(data.Dataobject[0].data["panstwa.symbol"])); 
-    this.gminyService.getByPowiat('łukowski').subscribe((data:Dataset<DataGminy>)=>console.log(data.Dataobject[0].data["gminy.nazwa"])); 
-    this.gminyService.get().subscribe((data:Dataset<DataGminy>)=>console.log(data.Dataobject[0].data["gminy.nazwa"])); 
+    // this.panstwaService.get()
+    // .pipe(
+    //   map(({Dataobject}) => Dataobject),
+    //   map((data) => data[0].data)
+    // )
+    // .subscribe(response => console.log(response))
+
+
+    this.panstwaService.get()
+    .pipe(
+      map(({Dataobject}) => Dataobject[0]),
+      map(({data}) => data),
+    )
+    .subscribe(response => console.log(response))
+   
   }
 }

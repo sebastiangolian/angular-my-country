@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { DataPanstwa } from 'src/app/interfaces/data-panstwa.interface';
-import { DataObject } from 'src/app/interfaces/base/data-object.interface';
 
 @Component({
   selector: 'app-country-list',
@@ -10,7 +9,7 @@ import { DataObject } from 'src/app/interfaces/base/data-object.interface';
 })
 export class CountryListComponent implements OnInit {
 
-  @Input() countries: DataObject<DataPanstwa>[] = null;
+  @Input() countries: DataPanstwa[];
 
   constructor() { }
 

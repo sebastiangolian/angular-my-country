@@ -8,7 +8,7 @@ import { DataPanstwa } from 'src/app/interfaces/data-panstwa.interface';
 })
 export class CountryItemComponent implements OnInit {
 
-  @Input() country: DataPanstwa = null
+  @Input() country: DataPanstwa
 
   constructor() {}
 

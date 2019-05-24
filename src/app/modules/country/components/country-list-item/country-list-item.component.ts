@@ -9,7 +9,7 @@ import { DataPanstwa } from 'src/app/interfaces/data-panstwa.interface';
 })
 export class CountryListItemComponent implements OnInit {
   
-  @Input() country: DataPanstwa = null;
+  @Input() country: DataPanstwa;
   
   constructor() { }
 
