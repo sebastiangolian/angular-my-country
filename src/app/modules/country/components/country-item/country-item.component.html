@@ -1,4 +1,5 @@
-{{country | json}}
 <div *ngIf="country">
-    {{country['panstwa.id']}}
+    <p>Id: {{country['panstwa.id']}}</p>
+    <p>Symbol: {{country['panstwa.symbol']}}</p>
+    <p>Nazwa: {{country['panstwa.nazwa']}}</p>
 </div>

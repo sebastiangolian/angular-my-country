@@ -1,24 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Dataset } from '../../interfaces/base/data-set.interface';
+import { DataSet } from '../../interfaces/base/data-set.interface';
+import { Url } from 'src/app/models/url.model';
 
 export abstract class AbstractService<T> {
 
-  order: string;
-  url: string; 
+  baseUrl: string
+  url: Url
   
   constructor(public http: HttpClient) {}
 
-  getUrl(): string
+  setUrl(url: string)
   {
-    return this.url + '?order=' + this.order
+    this.url = new Url(url)
   }
 
-  get(query?: string): Observable<Dataset<T>> {
-    let url:string = this.getUrl()
+  useBaseUrl()
+  {
+    this.url = new Url(this.baseUrl)
+  }
+
+  get(query?: string): Observable<DataSet<T>> {
     if(query){
-      url += '&conditions[q]=' + query
+      this.useBaseUrl()
+      this.url.query(query)
     }
-    return this.http.get<Dataset<T>>(url); 
+    return this.http.get<DataSet<T>>(this.url.render()); 
   }
 }

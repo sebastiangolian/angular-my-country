@@ -1,9 +1,12 @@
-<nav aria-label="Page navigation example">
+<nav aria-label="Page navigation example" *ngIf=links>
   <ul class="pagination">
-    <li class="page-item" *ngIf="links.first"><a class="page-link" href="#">First</a></li>
-    <li class="page-item" *ngIf="links.prev"><a class="page-link" href="#">Prev</a></li>
-    <li class="page-item" *ngIf="links.self"><a class="page-link" href="#">Self</a></li>
-    <li class="page-item" *ngIf="links.next"><a class="page-link" href="#">Next</a></li>
-    <li class="page-item" *ngIf="links.last"><a class="page-link" href="#">Last</a></li>
+    <li class="page-item" *ngIf="links.first"><a class="page-link" (click)="onClick(links.first)">First</a></li>
+    <li class="page-item disabled" *ngIf="!links.first"><a class="page-link">First</a></li>
+    <li class="page-item" *ngIf="links.prev"><a class="page-link" (click)="onClick(links.prev)">Prev</a></li>
+    <li class="page-item disabled" *ngIf="!links.prev"><a class="page-link">Prev</a></li>
+    <li class="page-item" *ngIf="links.next"><a class="page-link" (click)="onClick(links.next)">Next</a></li>
+    <li class="page-item disabled" *ngIf="!links.next"><a class="page-link">Next</a></li>
+    <li class="page-item" *ngIf="links.last"><a class="page-link" (click)="onClick(links.last)">Last</a></li>
+    <li class="page-item disabled" *ngIf="!links.last"><a class="page-link">Last</a></li>
   </ul>
 </nav>

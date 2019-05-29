@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { DataSetLinks } from 'src/app/interfaces/base/data-set-links.interface';
 
 @Component({
@@ -10,10 +10,13 @@ import { DataSetLinks } from 'src/app/interfaces/base/data-set-links.interface';
 export class PaginationComponent implements OnInit {
 
   @Input() links: DataSetLinks;
+  @Output() selectLink: EventEmitter<string> = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
+  onClick(link: string): void {
+    this.selectLink.emit(link);
+  }
 }
