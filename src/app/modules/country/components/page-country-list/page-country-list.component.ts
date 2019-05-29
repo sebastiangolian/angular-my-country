@@ -22,7 +22,7 @@ export class PageCountryListComponent implements OnInit {
 
   ngOnInit() {}
 
-  onChangeSelectedLink(link: string): void
+  onSelectLink(link: string): void
   {
     this.panstwaService.setUrl(link) 
     this.getData()
