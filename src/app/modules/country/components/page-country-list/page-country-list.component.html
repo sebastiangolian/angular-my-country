@@ -1,3 +1,5 @@
-<app-pagination [links]='links|async' (selectLink)="onPagination($event)"></app-pagination>
 <app-search (searchValue)="onSearch($event)"></app-search>
-<app-country-list [countries]='countries|async'></app-country-list>
+<div *ngIf="(dataobject$ | async) as dataobject">
+    <app-pagination [links]='dataobject | dataSetToLinks' (selectLink)="onPagination($event)"></app-pagination>
+    <app-country-list [countries]='dataobject | dataSetToData'></app-country-list>
+</div>

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataPanstwa } from 'src/app/interfaces/data-panstwa.interface';
 import { PanstwaService } from 'src/app/services/panstwa.service';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { DataSetLinks } from 'src/app/interfaces/base/data-set-links.interface';
 import { DataSet } from 'src/app/interfaces/base/data-set.interface';
 
 @Component({
@@ -13,12 +11,11 @@ import { DataSet } from 'src/app/interfaces/base/data-set.interface';
 })
 export class PageCountryListComponent implements OnInit {
   
-  public countries: Observable<DataPanstwa[]> 
-  public links: Observable<DataSetLinks>
+  public dataobject$: Observable<DataSet<DataPanstwa>>
     
   constructor(private panstwaService: PanstwaService) {
     this.panstwaService.useBaseUrl()
-    this.getData()
+    this.dataobject$ = this.panstwaService.get()
   }
 
   ngOnInit() {}
@@ -26,27 +23,11 @@ export class PageCountryListComponent implements OnInit {
   onPagination(link: string): void
   {
     this.panstwaService.setUrl(link) 
-    this.getData()
+    this.dataobject$ = this.panstwaService.get()
   }
 
   onSearch(value: string): void {
     this.panstwaService.useBaseUrl()
-    this.getData(value)
-  }
-
-  private getData(value?: string)
-  {
-    let get: Observable<DataSet<DataPanstwa>> = this.panstwaService.get(value != "" ? value : "" )
-
-    this.countries = get
-    .pipe(
-      map(({Dataobject}) => Dataobject),
-      map(data => {return data.map(element => element.data)})
-    );
-
-    this.links = get
-    .pipe(
-      map(({Links}) => Links)
-    );
+    this.dataobject$ = this.panstwaService.get(value != "" ? value : "")
   }
 }
