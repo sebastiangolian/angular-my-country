@@ -4,6 +4,7 @@ import { PanstwaService } from 'src/app/services/panstwa.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { DataSetLinks } from 'src/app/interfaces/base/data-set-links.interface';
+import { DataSet } from 'src/app/interfaces/base/data-set.interface';
 
 @Component({
   selector: 'app-page-country-list',
@@ -22,21 +23,28 @@ export class PageCountryListComponent implements OnInit {
 
   ngOnInit() {}
 
-  onSelectLink(link: string): void
+  onPagination(link: string): void
   {
     this.panstwaService.setUrl(link) 
     this.getData()
   }
 
-  private getData()
+  onSearch(value: string): void {
+    this.panstwaService.useBaseUrl()
+    this.getData(value)
+  }
+
+  private getData(value?: string)
   {
-    this.countries = this.panstwaService.get()
+    let get: Observable<DataSet<DataPanstwa>> = this.panstwaService.get(value != "" ? value : "" )
+
+    this.countries = get
     .pipe(
       map(({Dataobject}) => Dataobject),
       map(data => {return data.map(element => element.data)})
     );
 
-    this.links = this.panstwaService.get()
+    this.links = get
     .pipe(
       map(({Links}) => Links)
     );

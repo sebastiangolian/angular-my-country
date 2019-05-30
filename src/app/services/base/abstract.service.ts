@@ -10,14 +10,16 @@ export abstract class AbstractService<T> {
   
   constructor(public http: HttpClient) {}
 
-  setUrl(url: string)
+  setUrl(url: string): AbstractService<T>
   {
     this.url = new Url(url)
+    return this
   }
 
-  useBaseUrl()
+  useBaseUrl(): AbstractService<T>
   {
     this.url = new Url(this.baseUrl)
+    return this
   }
 
   get(query?: string): Observable<DataSet<T>> {

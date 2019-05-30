@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
-    PaginationComponent
+    PaginationComponent,
+    SearchComponent
   ],
   exports: [
-    PaginationComponent
+    PaginationComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule
