@@ -14,9 +14,9 @@ export class PageCountryItemComponent implements OnInit {
   
   public dataset$: Observable<DataSet<DataPanstwa>>
   
-  constructor(private route: ActivatedRoute, private panstwaService: PanstwaService) { 
+  constructor(private route: ActivatedRoute, private panstwaService: PanstwaService) {}
+
+  ngOnInit() {
     this.dataset$ = this.panstwaService.get(this.route.snapshot.paramMap.get('id'))
   }
-
-  ngOnInit() {}
 }

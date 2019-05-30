@@ -13,11 +13,11 @@ export class PageCountryListComponent implements OnInit {
   
   public dataset$: Observable<DataSet<DataPanstwa>>
     
-  constructor(private panstwaService: PanstwaService) {
+  constructor(private panstwaService: PanstwaService) {}
+
+  ngOnInit() {
     this.refresh()
   }
-
-  ngOnInit() {}
 
   onPagination(url: string): void {
     this.refresh("",url)
