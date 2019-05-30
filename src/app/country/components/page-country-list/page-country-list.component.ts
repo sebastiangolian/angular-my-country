@@ -14,20 +14,26 @@ export class PageCountryListComponent implements OnInit {
   public dataset$: Observable<DataSet<DataPanstwa>>
     
   constructor(private panstwaService: PanstwaService) {
-    this.panstwaService.useBaseUrl()
-    this.dataset$ = this.panstwaService.get()
+    this.refresh()
   }
 
   ngOnInit() {}
 
-  onPagination(link: string): void
-  {
-    this.panstwaService.setUrl(link) 
-    this.dataset$ = this.panstwaService.get()
+  onPagination(url: string): void {
+    this.refresh("",url)
   }
 
   onSearch(value: string): void {
-    this.panstwaService.useBaseUrl()
-    this.dataset$ = this.panstwaService.get(value != "" ? value : "")
+    this.refresh(value)
+  }
+
+  private refresh(data?: string, url?: string) {
+    if(url){
+      this.panstwaService.setUrl(url) 
+    }
+    else {
+      this.panstwaService.useBaseUrl()
+    }
+    this.dataset$ = this.panstwaService.get(data != "" ? data : "")
   }
 }
