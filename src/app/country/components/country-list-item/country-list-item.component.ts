@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { DataPanstwa } from 'src/app/interfaces/data-panstwa.interface';
+import { DataPanstwa } from 'src/app/moje-panstwo/interfaces/data-panstwa.interface';
 
 @Component({
   selector: 'app-country-list-item',

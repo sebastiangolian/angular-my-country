@@ -1,0 +1,3 @@
+<div *ngIf="(dataset$ | async) as dataset">
+    <app-country-item [country]='dataset|dataSetToData'></app-country-item>
+</div>

@@ -7,7 +7,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TestComponent } from './components/test/test.component';
-import { LogInterceptor } from './interceptors/log.interceptor';
+import { LogInterceptor } from '../shared/interceptors/log.interceptor';
 
 @NgModule({
   declarations: [

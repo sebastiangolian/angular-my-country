@@ -1,0 +1,5 @@
+<app-search (searchValue)="onSearch($event)"></app-search>
+<div *ngIf="(dataset$ | async) as dataset">
+    <app-pagination [links]='dataset | dataSetToLinks' (selectLink)="onPagination($event)"></app-pagination>
+    <app-country-list [countries]='dataset | dataSetToDataArray'></app-country-list>
+</div>

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { DataSet } from '../../interfaces/base/data-set.interface';
-import { Url } from 'src/app/models/url.model';
+import { DataSet } from '../interfaces/data-set.interface';
+import { Url } from '../models/url.model';
 
 export abstract class AbstractService<T> {
 

@@ -6,7 +6,8 @@ import { PageCountryListComponent } from './components/page-country-list/page-co
 import { PageCountryItemComponent } from './components/page-country-item/page-country-item.component';
 import { CountryListComponent } from './components/country-list/country-list.component';
 import { CountryListItemComponent } from './components/country-list-item/country-list-item.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { MojePanstwoModule } from '../moje-panstwo/moje-panstwo.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     CountryRoutingModule,
-    SharedModule
+    SharedModule,
+    MojePanstwoModule
   ],
   exports: [
     PageCountryListComponent, 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DataPanstwa } from 'src/app/interfaces/data-panstwa.interface';
-import { PanstwaService } from 'src/app/services/panstwa.service';
 import { Observable } from 'rxjs';
-import { DataSet } from 'src/app/interfaces/base/data-set.interface';
+import { DataSet } from 'src/app/moje-panstwo/interfaces/data-set.interface';
+import { DataPanstwa } from 'src/app/moje-panstwo/interfaces/data-panstwa.interface';
+import { PanstwaService } from 'src/app/moje-panstwo/services/panstwa.service';
 
 @Component({
   selector: 'app-page-country-list',
@@ -11,11 +11,11 @@ import { DataSet } from 'src/app/interfaces/base/data-set.interface';
 })
 export class PageCountryListComponent implements OnInit {
   
-  public dataobject$: Observable<DataSet<DataPanstwa>>
+  public dataset$: Observable<DataSet<DataPanstwa>>
     
   constructor(private panstwaService: PanstwaService) {
     this.panstwaService.useBaseUrl()
-    this.dataobject$ = this.panstwaService.get()
+    this.dataset$ = this.panstwaService.get()
   }
 
   ngOnInit() {}
@@ -23,11 +23,11 @@ export class PageCountryListComponent implements OnInit {
   onPagination(link: string): void
   {
     this.panstwaService.setUrl(link) 
-    this.dataobject$ = this.panstwaService.get()
+    this.dataset$ = this.panstwaService.get()
   }
 
   onSearch(value: string): void {
     this.panstwaService.useBaseUrl()
-    this.dataobject$ = this.panstwaService.get(value != "" ? value : "")
+    this.dataset$ = this.panstwaService.get(value != "" ? value : "")
   }
 }

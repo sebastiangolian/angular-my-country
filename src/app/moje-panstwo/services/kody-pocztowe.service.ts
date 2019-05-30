@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AbstractService } from './abstract.service';
 import { DataKodyPocztowe } from '../interfaces/data-kody-pocztowe.interface';
-import { AbstractService } from './base/abstract.service';
-import { Url } from '../models/url.model';
 
 @Injectable({
   providedIn: 'root'

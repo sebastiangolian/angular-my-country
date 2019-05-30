@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DataGminy } from '../interfaces/data-gminy.interface';
 import { Observable } from 'rxjs';
-import { AbstractService } from './base/abstract.service';
-import { DataSet } from '../interfaces/base/data-set.interface';
+import { AbstractService } from './abstract.service';
+import { DataGminy } from '../interfaces/data-gminy.interface';
 import { Url } from '../models/url.model';
+import { DataSet } from '../interfaces/data-set.interface';
+
 
 @Injectable({
   providedIn: 'root'

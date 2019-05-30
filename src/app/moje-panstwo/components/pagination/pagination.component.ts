@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
-import { DataSetLinks } from 'src/app/interfaces/base/data-set-links.interface';
+import { DataSetLinks } from '../../interfaces/data-set-links.interface';
 
 @Component({
   selector: 'app-pagination',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AbstractService } from './abstract.service';
 import { DataPanstwa } from '../interfaces/data-panstwa.interface';
-import { AbstractService } from './base/abstract.service';
 import { Url } from '../models/url.model';
 
 @Injectable({
