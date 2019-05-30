@@ -2,12 +2,12 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter
 import { DataSetLinks } from '../../interfaces/data-set-links.interface';
 
 @Component({
-  selector: 'app-pagination',
-  templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.css'],
+  selector: 'app-moje-panstwo-pagination',
+  templateUrl: './moje-panstwo-pagination.component.html',
+  styleUrls: ['./moje-panstwo-pagination.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PaginationComponent implements OnInit {
+export class MojePanstwoPaginationComponent implements OnInit {
 
   @Input() links: DataSetLinks;
   @Output() selectLink: EventEmitter<string> = new EventEmitter();
